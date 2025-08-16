@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>サンプル2</title>
+  <meta name="description" content="あなたのサイトの説明文" />
+
+  <!-- ページ内に直接CSSを記述（まずは1ファイルで完結）。慣れたら外部CSSに分離してOK -->
+  <style>
+    :root{
+      --bg: #1a52d2;          /* 背景(濃い藍) */
+      --card: #081021;        /* カード背景 */
+      --text: #fbfcfd;        /* 文字(明) */
+      --muted: #9ca3af;       /* 補助文字 */
+      --accent: #60a5fa;      /* アクセント */
+      --accent-2: #34d399;    /* サブアクセント */
+      --maxw: 1100px;         /* 最大幅 */
+      --radius: 16px;         /* 角丸 */
+      --shadow: 0 10px 25px rgba(0,0,0,.25);
+    }
+    *{box-sizing: border-box}
+    html,body{height:100%;}
+    body{
+      margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      background: radial-gradient(1000px 600px at 10% -10%, #1f2937 0%, transparent 60%),
+                  radial-gradient(800px 500px at 90% 0%, #0b1324 0%, transparent 65%),
+                  var(--bg);
+      color: var(--text);
+      line-height:1.7;
+    }
+    a{color: var(--accent); text-decoration: none}
+    a:hover{opacity:.9}
+    .container{max-width: var(--maxw); margin: 0 auto; padding: 0 16px}
+
+    /* ヘッダー */
+    header{
+      position: sticky; top:0; z-index: 10;
+      background: rgba(17,24,39,.7); backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; height:64px}
+    .brand{display:flex; gap:12px; align-items:center; font-weight:700}
+    .logo{width:32px; height:32px; border-radius:8px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: var(--shadow)}
+    .nav a{margin-left:16px; color:var(--text)}
+    .nav a.cta{background: var(--accent); color:#0b1020; padding:10px 14px; border-radius: 999px; font-weight:700}
+
+    /* ヒーロー */
+    .hero{padding: 72px 0}
+    .hero .wrap{display:grid; grid-template-columns: 1.2fr 1fr; gap:28px; align-items:center}
+    .eyebrow{color: var(--accent-2); font-weight:700; letter-spacing:.06em}
+    h1{font-size: clamp(28px, 5vw, 44px); line-height:1.15; margin:10px 0 12px}
+    .lead{font-size: clamp(16px, 2.5vw, 18px); color: var(--muted)}
+    .actions{margin-top:18px; display:flex; gap:12px; flex-wrap:wrap}
+    .btn{display:inline-block; padding:12px 18px; border-radius: 12px; font-weight:700; border:1px solid rgba(255,255,255,.12)}
+    .btn.primary{background: var(--accent); color:#0b1020; border-color: transparent}
+    .btn.ghost{color:var(--text)}
+    .mock{background: linear-gradient(180deg, #0b1020, #101826); border:1px solid rgba(255,255,255,.06); border-radius: var(--radius); padding:18px; box-shadow: var(--shadow)}
+
+    /* 特徴 */
+    .features{padding: 40px 0}
+    .grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:18px}
+    .card{background: var(--card); border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding:18px; box-shadow: var(--shadow)}
+    .card h3{margin:0 0 8px}
+    .kicker{font-size:14px; color:var(--muted); margin-top:4px}
+
+    /* お問い合わせ */
+    .contact{padding: 56px 0}
+    form{display:grid; gap:12px}
+    input, textarea{width:100%; padding:12px 14px; border-radius: 12px; border:1px solid rgba(255,255,255,.12); background:#0b1020; color:var(--text)}
+    textarea{min-height:120px}
+    .note{font-size:13px; color:var(--muted)}
+
+    /* フッター */
+    footer{padding: 28px 0; border-top: 1px solid rgba(255,255,255,.08); color:var(--muted); text-align:center}
+
+    /* レスポンシブ */
+    @media (max-width: 900px){
+      .hero .wrap{grid-template-columns: 1fr}
+      .grid{grid-template-columns: 1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <div class="brand"><div class="logo"></div> あなたのブランド</div>
+        <div>
+          <a href="#features">特徴</a>
+          <a href="#contact">お問い合わせ</a>
+          <a href="#" class="cta">無料で試す</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ヒーローセクション -->
+  <section class="hero">
+    <div class="container wrap">
+      <div>
+        <div class="eyebrow">HTML/CSSでもOK</div>
+        <h1>サンプルテスト中<br/>個人・小規模向けHPテンプレ</h1>
+        <p class="lead">この1ファイルを保存して開くだけで、すぐに見た目の良いホームページが動きます。テキストを書き換えるだけであなた用に。</p>
+        <div class="actions">
+          <a class="btn primary" href="#features">特徴を見る</a>
+          <a class="btn ghost" href="#contact">お問い合わせ</a>
+        </div>
+      </div>
+      <div>
+        <div class="mock">
+          <img src="https://picsum.photos/800/450" alt="ダミー画像" style="width:100%; border-radius:12px; display:block"/>
+          <p class="note">※ ここにサービスや商品画像を配置します（上のダミー画像は自由に差し替え）</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 特徴 -->
+  <section id="features" class="features">
+    <div class="container">
+      <div class="grid">
+        <article class="card">
+          <h3>① コピペですぐ使える</h3>
+          <p>このテンプレートを <code>index.html</code> として保存 → ブラウザで開くだけ。</p>
+          <div class="kicker">5分で公開準備</div>
+        </article>
+        <article class="card">
+          <h3>② レスポンシブ対応</h3>
+          <p>スマホ・タブレット・PCで読みやすくなるように、CSSメディアクエリを内蔵。</p>
+          <div class="kicker">1ファイル完結</div>
+        </article>
+        <article class="card">
+          <h3>③ 後で拡張しやすい</h3>
+          <p>慣れたらCSSを外部ファイル化、ページ追加やナビゲーション拡張も簡単。</p>
+          <div class="kicker">長く使える設計</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- お問い合わせ（ダミー） -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>お問い合わせ</h2>
+      <p class="note">※ 実際の送信にはフォームサービス（Formspree/Googleフォームなど）を使うか、サーバー側の実装が必要です。</p>
+      <form onsubmit="event.preventDefault(); alert('送信テスト：フォーム連携は未設定です');">
+        <input type="text" name="name" placeholder="お名前" required />
+        <input type="email" name="email" placeholder="メールアドレス" required />
+        <textarea name="message" placeholder="お問い合わせ内容"></textarea>
+        <button class="btn primary" type="submit">送信</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer>
+    <div class="container">© <span id="y"></span> あなたのサイト名</div>
+  </footer>
+
+  <script>
+    // 西暦を自動表示
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
